@@ -4,6 +4,12 @@
   #vars:
   #  PASS="TestPassword123"
   tasks:
+  - name: debug stuff
+    shell: echo $UPass
+    register: debug
+  - debug:
+      var: debug
+
   - name: update sources
     shell: apt-get update
   
