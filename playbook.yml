@@ -5,10 +5,10 @@
   become_method: sudo
   tasks:
   - name: update sources
-    shell: apt-get update
+    shell: apt-get update && apt-get upgrade
   
   - name: install mysql
-    shell: apt-get install -y mysql-server mysql-client
+    shell: apt-get purge mysql-client && apt-get autoremove && apt-get autoclean && apt-get install -y mysql-server mysql-client
   
   - name: start mysql
     shell: /etc/init.d/mysql restart 
