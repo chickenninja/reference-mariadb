@@ -4,9 +4,6 @@
   #vars:
   #  PASS="TestPassword123"
   tasks:
-  - name: echo vars
-    shell: echo $UPass
-
   - name: update sources
     shell: apt-get update
   
@@ -17,13 +14,13 @@
     shell: /etc/init.d/mysql restart 
   
   - name: set credentials
-    shell: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ rootPass }}';"
+    shell: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$RPass';"
 
   - name: create db
-    shell: mysql -e "CREATE DATABASE IF NOT EXISTS {{ dbName  }};"
+    shell: mysql -e "CREATE DATABASE IF NOT EXISTS $DB_Name;"
 
   - name: add user to manage create db
-    shell: mysql -e "CREATE USER 'sean'@'localhost' IDENTIFIED BY '{{ userPass }}';"
+    shell: mysql -e "CREATE USER 'sean'@'localhost' IDENTIFIED BY '$UPass';"
 
   - name: grant user privileges to access db
-    shell: mysql -e "GRANT ALL PRIVILEGES ON {{ dbName }}.* TO 'sean'@'localhost'; FLUSH PRIVILEGES;"
+    shell: mysql -e "GRANT ALL PRIVILEGES ON $DB_Name.* TO 'sean'@'localhost'; FLUSH PRIVILEGES;"
