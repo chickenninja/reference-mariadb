@@ -8,7 +8,7 @@
     shell: apt-get update && apt-get upgrade
   
   - name: install mysql
-    shell: apt-get purge mysql-client && apt-get autoremove && apt-get autoclean && apt-get install -y mysql-server mysql-client
+    shell: apt-get purge mysql-client && apt-get autoremove && apt-get autoclean && apt-get install -y --allow-unauthenticated mysql-server mysql-client
   
   - name: start mysql
     shell: /etc/init.d/mysql restart 
