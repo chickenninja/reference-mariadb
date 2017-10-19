@@ -5,7 +5,7 @@
   become_method: sudo
   tasks:
   - name: update sources
-    shell: apt-get update && apt-get upgrade
+    shell: apt-get update
   
   - name: install mysql
     shell: apt-get purge mysql-client && apt-get autoremove && apt-get autoclean && apt-get install -y --allow-unauthenticated mysql-server mysql-client
