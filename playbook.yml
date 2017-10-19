@@ -1,6 +1,8 @@
 ---
 - name: install mysql and create db
   hosts: mariadb
+  become: yes
+  become_method: sudo
   tasks:
   - name: update sources
     shell: apt-get update
