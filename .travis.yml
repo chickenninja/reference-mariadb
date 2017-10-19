@@ -1,9 +1,7 @@
 language: node_js
 sudo: enabled
 env:
-  - UPass="UPassword123"
-  - RPass="RPassword123"
-  - DB_NAME="Test"
+  - UPass="UPassword123" RPass="RPassword123" DB_NAME="Test"
 before_install:
   - sudo apt-get update 
   - sudo apt-get install -y software-properties-common 
