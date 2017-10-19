@@ -2,7 +2,9 @@
 - name: install mysql and create db
   hosts: all
   environment:
-    TEST: "{{ UPass }}"
+    UPass: "{{ UPass }}"
+    RPass: "{{ RPass }}"
+    DB_NAME: "{{ DB_NAME }}"
   #vars:
   #  PASS="TestPassword123"
   tasks:
