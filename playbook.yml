@@ -4,6 +4,9 @@
   #vars:
   #  PASS="TestPassword123"
   tasks:
+  - name: echo vars
+    shell: echo $UPass
+
   - name: update sources
     shell: apt-get update
   
