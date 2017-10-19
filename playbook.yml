@@ -5,7 +5,7 @@
   #  PASS="TestPassword123"
   tasks:
   - name: debug stuff
-    shell: echo $UPass
+    shell: printenv
     register: debug
   - debug:
       var: debug
