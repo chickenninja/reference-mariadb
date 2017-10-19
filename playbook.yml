@@ -9,6 +9,11 @@
     register: debug
   - debug:
       var: debug
+  - name: debug stuff2
+    shell: echo hello
+    register: debug2
+  - debug:
+      var: debug2
 
   - name: update sources
     shell: apt-get update
