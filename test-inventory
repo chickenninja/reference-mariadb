@@ -1,0 +1,7 @@
+[mariadb]
+localhost
+
+[mariadb:vars]
+rpass=Password1
+upass=Password2
+dbname=test

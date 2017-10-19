@@ -1,24 +1,7 @@
 ---
 - name: install mysql and create db
-  hosts: all
-  environment:
-    UPass: "{{ UPass }}"
-    RPass: "{{ RPass }}"
-    DB_NAME: "{{ DB_NAME }}"
-  #vars:
-  #  PASS="TestPassword123"
+  hosts: mariadb
   tasks:
-  - name: debug stuff
-    shell: printenv
-    register: debug
-  - debug:
-      var: debug
-  - name: debug stuff2
-    shell: echo hello
-    register: debug2
-  - debug:
-      var: debug2
-
   - name: update sources
     shell: apt-get update
   
@@ -29,13 +12,13 @@
     shell: /etc/init.d/mysql restart 
   
   - name: set credentials
-    shell: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$RPass';"
+    shell: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ rpass }}';"
 
   - name: create db
-    shell: mysql -e "CREATE DATABASE IF NOT EXISTS $DB_Name;"
+    shell: mysql -e "CREATE DATABASE IF NOT EXISTS {{ dbname }};"
 
   - name: add user to manage create db
-    shell: mysql -e "CREATE USER 'sean'@'localhost' IDENTIFIED BY '$UPass';"
+    shell: mysql -e "CREATE USER 'sean'@'localhost' IDENTIFIED BY '{{ upass }}';"
 
   - name: grant user privileges to access db
-    shell: mysql -e "GRANT ALL PRIVILEGES ON $DB_Name.* TO 'sean'@'localhost'; FLUSH PRIVILEGES;"
+    shell: mysql -e "GRANT ALL PRIVILEGES ON {{ dbname }}.* TO 'sean'@'localhost'; FLUSH PRIVILEGES;"
